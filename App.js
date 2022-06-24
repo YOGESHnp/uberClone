@@ -1,29 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, Image, StatusBar, FlatList} from 'react-native';
 import RestaurantItem from './src/components/RestaurantItem';
 import restaurants from './assets/data/restaurants.json';
 
 export default function App() {
-    return(
-        <View style={styles.container}>
-            
-            <RestaurantItem restaurant={restaurants[0]}/>
-            <RestaurantItem restaurant={restaurants[1]}/>
-            
+  return (
+    <View style={styles.container}>
+      
+            <FlatList
+                data={restaurants}
+                renderItem={({ item }) => <RestaurantItem restaurant={item} />}
+                showsVerticalScrollIndicator={false}
+            />
 
-            <StatusBar style="auto" />
-        </View>
-    );
-};
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 10,
-    },
-    
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    paddingVertical: 30, //temporary hack
+  },
 });
-
