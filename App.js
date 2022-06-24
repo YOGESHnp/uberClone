@@ -1,18 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, StatusBar, FlatList} from 'react-native';
-import RestaurantItem from './src/components/RestaurantItem';
-import restaurants from './assets/data/restaurants.json';
+import {View, StyleSheet, StatusBar} from 'react-native';
+import HomeScreen from './src/screens/HomeScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      
-            <FlatList
-                data={restaurants}
-                renderItem={({ item }) => <RestaurantItem restaurant={item} />}
-                showsVerticalScrollIndicator={false}
-            />
-
+      <HomeScreen/>
       <StatusBar style="auto" />
     </View>
   );
