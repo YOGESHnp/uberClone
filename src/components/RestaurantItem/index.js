@@ -1,37 +1,42 @@
-import React from 'react'; 
+import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-const RestaurantItem = () => {
-    return(
-        <View style={styles.restaurantContainer}>
-            <Image source={{uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg'}}
-                style={styles.image}
-                />
-                <Text style={styles.title}>El Cabo Coffee Bar Tres De May</Text>
-                <Text style={styles.subtitle}>$1.99 15-30 minutes</Text>
-
-        </View>
-    );
+const RestaurantItem = ({restaurant}) => {
+  return (
+    <View style={styles.restaurantContainer}>
+      <Image
+        source={{
+          uri: restaurant.image,
+        }}
+        style={styles.image}
+      />
+      <Text style={styles.title}>{restaurant.name}</Text>
+      <Text style={styles.subtitle}>
+        ${restaurant.deliveryFee} &#8226;
+        {``} {restaurant.minDeliveryTime}-{restaurant.maxDeliveryTime} minutes
+      </Text>
+    </View>
+  );
 };
 
 export default RestaurantItem;
 
 const styles = StyleSheet.create({
-    restaurantContainer:{
-        width: "100%",
-        marginVertical: 10,
-    },
-    image: {
-        width: "100%",
-        aspectRatio: 5/3,
-        marginBottom: 5,
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: "700",
-        marginVertical: 5,
-    },
-    subtitle: {
-        color: "grey",
-    },
+  restaurantContainer: {
+    width: '100%',
+    marginVertical: 10,
+  },
+  image: {
+    width: '100%',
+    aspectRatio: 5 / 3,
+    marginBottom: 5,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginVertical: 5,
+  },
+  subtitle: {
+    color: 'grey',
+  },
 });
